@@ -1,0 +1,196 @@
+//>>>>> Clients Section Start <<<<<//
+
+.clients-section {
+    background: linear-gradient(135deg, #f8f9fb 0%, #ffffff 100%);
+    position: relative;
+    
+    .section-title {
+        margin-bottom: 60px;
+        
+        span {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d6b269;
+            margin-bottom: 15px;
+            
+            @include breakpoint(max-md) {
+                font-size: 12px;
+            }
+        }
+        
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #051d40;
+            margin-bottom: 20px;
+            
+            @include breakpoint(max-lg) {
+                font-size: 40px;
+            }
+            
+            @include breakpoint(max-md) {
+                font-size: 32px;
+            }
+            
+            @include breakpoint(max-sm) {
+                font-size: 26px;
+            }
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #6f7d93;
+            
+            @include breakpoint(max-md) {
+                font-size: 14px;
+            }
+        }
+    }
+    
+    .clients-wrapper {
+        margin-top: 50px;
+        
+        .row {
+            gap: 20px;
+            align-items: center;
+        }
+    }
+}
+
+.client-logo-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 140px;
+    
+    .client-logo-box {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1.5px solid rgba(214, 178, 105, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        padding: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(214, 178, 105, 0.1) 0%, rgba(214, 178, 105, 0.05) 100%);
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        
+        img {
+            max-width: 100%;
+            max-height: 80px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.9);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            z-index: 2;
+        }
+        
+        &:hover {
+            border-color: #d6b269;
+            background: linear-gradient(135deg, rgba(214, 178, 105, 0.05) 0%, rgba(214, 178, 105, 0.02) 100%);
+            box-shadow: 0 12px 35px rgba(214, 178, 105, 0.25), 
+                        0 0 0 1px rgba(214, 178, 105, 0.15);
+            transform: translateY(-8px) scale(1.05);
+            
+            &::before {
+                opacity: 1;
+            }
+            
+            img {
+                filter: grayscale(0%) brightness(1);
+                transform: scale(1.1);
+            }
+        }
+    }
+    
+    @include breakpoint(max-lg) {
+        min-height: 120px;
+        
+        .client-logo-box {
+            padding: 15px;
+        }
+    }
+    
+    @include breakpoint(max-md) {
+        min-height: 110px;
+        
+        .client-logo-box {
+            padding: 12px;
+            border-radius: 10px;
+        }
+    }
+    
+    @include breakpoint(max-sm) {
+        min-height: 100px;
+        
+        .client-logo-box {
+            padding: 10px;
+            img {
+                max-height: 60px;
+            }
+        }
+    }
+}
+
+// Animation for staggered entrance
+@for $i from 1 through 13 {
+    .client-logo-item:nth-child(#{$i}) {
+        animation-delay: #{0.1 * ($i - 1)}s !important;
+    }
+}
+
+// Responsive adjustments
+@include breakpoint(max-xl) {
+    .clients-section {
+        .section-title {
+            h2 {
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+@include breakpoint(max-md) {
+    .clients-section {
+        section-padding: 40px 0;
+        
+        .section-title {
+            margin-bottom: 40px;
+            
+            h2 {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+            
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+//>>>>> Clients Section End <<<<<//
